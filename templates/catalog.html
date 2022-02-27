@@ -1,0 +1,130 @@
+{% extends "base.html" %}
+
+{% block links %}
+	<link rel="preconnect" href="https://fonts.googleapis.com">
+	<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+	<link href="https://fonts.googleapis.com/css2?family=Comfortaa:wght@400;700&display=swap" rel="stylesheet">
+	<link rel="stylesheet" href="{{url_for('static', filename='css/null.css')}}">
+	<link rel="stylesheet" href="{{url_for('static', filename='css/main.css')}}">
+{% endblock %}
+
+
+{% block content %}
+<div class="container">
+			<div class="header">
+				<img src="source/FridgeX.png" alt="">
+			</div>
+
+			<div class="day-recipe-block">
+
+				<div class="title">
+					<h3>Попробуйте<span class="orange"> рецепты дня</span></h3>
+				</div>
+
+				<div class="recipe-row">
+					{% for i in daily_recipes %}
+					<div class="recipe-card">
+						<img class="recipe-photo" src="{{url_for('static', filename='img/recipe_' + string_id[i.id] + '.jpg')}}" alt="">
+
+						<div class="recipe-info">
+							<div class="recipe-name"><h4>{{i.recipe_name}}</h4></div>
+							<div class="recipe-info-bottom">
+								<div class="time">
+									<img src="{{url_for('static', filename='img/source/time.png')}}" alt="" class="recipe-icons">
+									<span class="time-value">{{i.time}} мин</span>
+								</div>
+
+								<div class="dropmenu-block">
+									<label for="dropmenu-button-1">
+										<img src="{{url_for('static', filename='img/source/calories.png')}}" alt="" class="recipe-icons" class="recipe-icons">
+										<img src="{{url_for('static', filename='img/source/color-protein.png')}}" alt="" class="recipe-icons" class="recipe-icons">
+										<img src="{{url_for('static', filename='img/source/color-fats.png')}}" alt="" class="recipe-icons" class="recipe-icons">
+										<img src="{{url_for('static', filename='img/source/color-cerals.png')}}" alt="" class="recipe-icons" class="recipe-icons">
+									</label>
+
+									<div class="dropmenu">
+										<span class="dropmenu-row"><img src="{{url_for('static', filename='img/source/calories.png')}}" alt="" class="recipe-icons" class="recipe-icons"><span class="dropmenu-value">{{i.calories}} ккал</span></span>
+										<span class="dropmenu-row"><img src="{{url_for('static', filename='img/source/color-protein.png')}}" alt="" class="recipe-icons" class="recipe-icons"><span class="dropmenu-value">{{i.proteins}} белков</span></span>
+										<span class="dropmenu-row"><img src="{{url_for('static', filename='img/source/color-fats.png')}}" alt="" class="recipe-icons" class="recipe-icons"><span class="dropmenu-value">{{i.fats}} жиров</span></span>
+										<span class="dropmenu-row"><img src="{{url_for('static', filename='img/source/color-cerals.png')}}" alt="" class="recipe-icons" class="recipe-icons"><span class="dropmenu-value">{{i.carboh}} углеводов</span></span>
+									</div>
+								</div>
+							</div>
+						</div>
+					</div>
+					{% endfor %}
+				</div>
+			</div>
+
+			<div class="catalog">
+				<div class="title"><h3>Или найдите <span class="orange">рецепт для себя</span></h3></div>
+				<div class="filter">
+					<div class="search">
+						<form action="#" name = "search-form" id="search-form" method="post">
+							{{form.title(class="search-pole", id="search", autocomplete="none", placeholder="Начните вводить название...")}}
+						<div class="filter-settings">
+							{{form.time(class="search-pole selector", id="time-filter", autocomplete="none", placeholder="Время приготовления...")}}
+							{{form.fats(class="search-pole selector", id="fats-filter", autocomplete="none", placeholder="Макс. жиров")}}
+							{{form.protein(class="search-pole selector", id="proteins-filter", autocomplete="none", placeholder="Макс. белков")}}
+							{{form.carboh(class="search-pole selector", id="cal-filter", autocomplete="none", placeholder="Макс. углеводов")}}
+						</div>
+						<div class="categories">
+							<button type="submit" value="all" name="submit_button" >Все</button>
+							<button type="submit" value="Каши" name="submit_button" >Каши</button>
+							<button type="submit" value="Супы" name="submit_button">Супы</button>
+							<button type="submit" value="Горячие блюда" name="submit_button">Второе</button>
+							<button type="submit" value="Салаты" name="submit_button">Салаты</button>
+							<button type="submit" value="Напитки" name="submit_button">Напитки</button>
+							<button type="submit" value="Десерты" name="submit_button">Десерты</button>
+							<button type="submit" value="Выпечка" name="submit_button">Выпечка</button>
+							<button type="submit" value="Соусы" name="submit_button">Соусы</button>
+					</div>
+						</form>
+					</div>
+				</div>
+
+				<div class="catalog-page">
+				<div class="recipe-row">
+
+					{% for i in recipes %}
+						<div class="recipe-card" onclick="location.href='/fridge/{{i.id}}'">
+							<img class="recipe-photo" src="{{url_for('static', filename='img/recipe_' + string_id[i.id] + '.jpg')}}" alt="">
+
+							<div class="recipe-info">
+								<div class="recipe-name"><h4>{{i.recipe_name}}</h4></div>
+								<div class="recipe-info-bottom">
+									<div class="time">
+										<img src="{{url_for('static', filename='img/source/time.png')}}" alt="" class="recipe-icons">
+										<span class="time-value">{{i.time}} мин</span>
+									</div>
+
+									<div class="dropmenu-block">
+										<label for="dropmenu-button-1">
+											<img src="{{url_for('static', filename='img/source/calories.png')}}" alt="" class="recipe-icons" class="recipe-icons">
+											<img src="{{url_for('static', filename='img/source/color-protein.png')}}" alt="" class="recipe-icons" class="recipe-icons">
+											<img src="{{url_for('static', filename='img/source/color-fats.png')}}" alt="" class="recipe-icons" class="recipe-icons">
+											<img src="{{url_for('static', filename='img/source/color-cerals.png')}}" alt="" class="recipe-icons" class="recipe-icons">
+										</label>
+
+										<div class="dropmenu">
+											<span class="dropmenu-row"><img src="{{url_for('static', filename='img/source/calories.png')}}" alt="" class="recipe-icons" class="recipe-icons"><span class="dropmenu-value">{{i.calories}} ккал</span></span>
+											<span class="dropmenu-row"><img src="{{url_for('static', filename='img/source/color-protein.png')}}" alt="" class="recipe-icons" class="recipe-icons"><span class="dropmenu-value">{{i.proteins}} белков</span></span>
+											<span class="dropmenu-row"><img src="{{url_for('static', filename='img/source/color-fats.png')}}" alt="" class="recipe-icons" class="recipe-icons"><span class="dropmenu-value">{{i.fats}} жиров</span></span>
+											<span class="dropmenu-row"><img src="{{url_for('static', filename='img/source/color-cerals.png')}}" alt="" class="recipe-icons" class="recipe-icons"><span class="dropmenu-value">{{i.carboh}} углеводов</span></span>
+										</div>
+									</div>
+								</div>
+							</div>
+						</div>
+					{% endfor %}
+
+				<div class="pagination"></div>
+			</div>
+		</div>
+		</div>
+{% endblock %}
+
+
+
+
+

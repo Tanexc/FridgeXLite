@@ -1,0 +1,72 @@
+{% extends "base.html" %}
+
+{% block links %}
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Comfortaa:wght@400;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="{{url_for('static', filename='css/recipe_.css')}}">
+<link rel="preconnect" href="https://fonts.gstatic.com">
+<link href="https://fonts.googleapis.com/css2?family=Comfortaa:wght@600&amp;display=swap" rel="stylesheet">
+{% endblock %}
+
+{% block content %}
+<div class="container">
+	<div class="about-dish">
+		<div class="photo">
+			<img src="{{url_for('static', filename='img/recipe_' + id + '.jpg')}}" alt="">
+		</div>
+		<div class="ingreds">
+			<h4>Ингредиенты</h4>
+			{% for i in ingredients %}
+				<li>{{i}}</li>
+			{% endfor %}
+
+<!-- 				<div class="variator">
+					<div class="line">
+					</div>
+					<span>1</span><h5>порция</h5>
+				</div> -->
+		</div>
+
+	</div>
+
+		<div class="recipe-block">
+			<div class="tiltle-row">
+				<h1>{{recipe.recipe_name}}</h1>
+				<a href="#"><img src="{{url_for('static', filename='img/source/share 1.png')}}" alt="" class="share"></a>
+			</div>
+			<div class="lable-row">
+					<div class="lable">
+						<div class="lable-text"><span class="name">Готовится</span><span class="value">{{recipe.time}} минут</span></div>
+						<img src="{{url_for('static', filename='img/source/time.png')}}" alt="">
+					</div>
+					<div class="lable">
+						<div class="lable-text"><span class="name">Калории</span><span class="value">{{recipe.calories}}ккал/100г</span></div>
+						<img src="{{url_for('static', filename='img/source/calories.png')}}" alt="">
+					</div>
+					<div class="lable">
+						<div class="lable-text"><span class="name">Белки</span><span class="value">{{recipe.proteins}}г/100г</span></div>
+						<img src="{{url_for('static', filename='img/source/color-cerals.png')}}" alt="">
+					</div>
+					<div class="lable">
+						<div class="lable-text"><span class="name">Жиры</span><span class="value">{{recipe.fats}}г/100г</span></div>
+						<img src="{{url_for('static', filename='img/source/color-fats.png')}}" alt="">
+					</div>
+					<div class="lable">
+						<div class="lable-text"><span class="name">Углеводы</span><span class="value">{{recipe.carboh}}г/100г</span></div>
+						<img src="{{url_for('static', filename='img/source/color-protein.png')}}" alt="">
+					</div>
+				</div>
+			<div class="recipe">
+				<h2>Способ приготовления</h2>
+
+				{% for i in prepare %}
+
+					<p>{{i}}</p>
+
+				{% endfor %}
+
+				</div>
+		</div>
+</div>
+{% endblock %}
