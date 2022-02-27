@@ -23,7 +23,7 @@
 
 				<div class="recipe-row">
 					{% for i in daily_recipes %}
-					<div class="recipe-card">
+					<div class="recipe-card" onclick="location.href='/fridge/{{i.id}}'">
 						<img class="recipe-photo" src="{{url_for('static', filename='img/recipe_' + string_id[i.id] + '.jpg')}}" alt="">
 
 						<div class="recipe-info">
