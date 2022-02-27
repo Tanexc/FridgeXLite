@@ -40,7 +40,7 @@ def main():
     for i in range(len(recipes)):
         string_id[recipes[i].id] = str(recipes[i].id)
     port = int(os.environ.get("PORT", 5000))
-    app.run()
+    app.run(host="0.0.0.0", port=port)
 
 
 # главная страница социальной сети
