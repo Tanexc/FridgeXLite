@@ -12,14 +12,23 @@
 {% block content %}
 <div class="container">
 	<div class="about-dish">
+		<div class="tiltle-row">
+				<h1>{{recipe.recipe_name}}</h1>
+				<a href="#"><img src="{{url_for('static', filename='img/source/share 1.png')}}" alt="" class="share"></a>
+			</div>
 		<div class="photo">
 			<img src="{{url_for('static', filename='img/recipe_' + id + '.jpg')}}" alt="">
 		</div>
 		<div class="ingreds">
 			<h4>Ингредиенты</h4>
-			{% for i in ingredients %}
-				<li>{{i}}</li>
+			<ul>
+			{% for i in range(count) %}
+				<li><span class="ingredient-title">{{ingredients[i]}}</span>
+					<span class="dots"></span>
+					<span class="count">{{value[i]}}</span>
+				</li>
 			{% endfor %}
+			</ul>
 
 <!-- 				<div class="variator">
 					<div class="line">
@@ -31,10 +40,6 @@
 	</div>
 
 		<div class="recipe-block">
-			<div class="tiltle-row">
-				<h1>{{recipe.recipe_name}}</h1>
-				<a href="#"><img src="{{url_for('static', filename='img/source/share 1.png')}}" alt="" class="share"></a>
-			</div>
 			<div class="lable-row">
 					<div class="lable">
 						<div class="lable-text"><span class="name">Готовится</span><span class="value">{{recipe.time}} минут</span></div>

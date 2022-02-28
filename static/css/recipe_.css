@@ -1,63 +1,120 @@
-*{
+* {
 	margin: 0;
 	padding: 0;
 	box-sizing: border-box;
 	font-family: Comfortaa;
 }
-body{
+
+.ingredient-title {
+    font-weight: bold;
+	min-width: fit-content;
+}
+
+.count {
+    min-width: fit-content;
+}
+
+body {
 	max-width: 100vw;
 	overflow-y: scroll;
 	overflow-x: hidden;
+}
+
+li {
+	list-style-type: none;
+	font-size: 24px;
+	padding: 10px 0;
+	display: flex;
+	justify-content: center;
+	align-items: flex-end;
+}
+
+li span {
+	display: block;
 
 }
- li {
-    list-style-type: none; /* Убираем маркеры */
+
+.dots {
+	width: 100%;
+	border-bottom: 1px dashed #000;
+	align-items: flex-end;
 }
+
 .container {
 	display: flex;
 	flex-direction: row;
 	max-width: 1600px;
-	margin: 20px auto;
+	padding: 20px 0 10px;
+	margin: 0px auto;
 }
+
 .about-dish {
-display: flex;
-flex-direction: column;
-width: 31.25%;
+	display: flex;
+	flex-direction: column;
+	width: 31.25%
 }
-.photo{
+
+.photo {
 	width: 100%;
 }
-.photo img{
+
+.photo img {
 	width: 100%;
 	height: 400px;
 	object-fit: cover;
 	object-position: center;
 	border-radius: 50px;
-	border	
 }
-.about-dish h4{
+
+.about-dish h4 {
 	font-weight: bold;
 	font-size: 38px;
 	padding: 10px 0;
 }
 
-ul{
-}
-li{
-	font-size: 24px;
-	padding: 10px 0;
-}
 
+}
+.tiltle-row {
+	font-size: ;
+	display: flex;
+	align-items: center;
+	text-align: center;
+	background-color: #fff;
+	border-bottom: 1px solid #000;
+	width: 100%;
+	padding: 10px;
+}
+.lable-row {
+	display: flex;
+	flex-wrap: wrap;
+}
+.lable {
+	display: flex;
+	flex-direction: row;
+	align-items: center;
+	justify-content: space-between;
+	padding: 10px;
+	margin: 10px 0;
+	border: 1px solid #000;
+	border-radius: 20px;
+	flex: 1 1 250px;
+}
+.lable-text {
+	display: flex;
+	flex-direction: column;
+}
+.lable-text span {}
 .recipe-block {
-display: flex;
-flex-direction: column;
-width: 67%;
-margin-left: 40px}
-
-.recipe{
-	margin: 20px 0;
+	display: flex;
+	flex-direction: column;
+	width: 67%;
+	margin: 20px;
+	padding: 0px 20px;
 }
-.recipe p{
+.recipe {
+	margin: 10px 0;
+}
+.recipe p {
 	margin: 10px 0;
 	font-size: 24px;
 	text-align: justify;
@@ -66,36 +123,15 @@ margin-left: 40px}
 	display: flex;
 	justify-content: space-between;
 }
-.tiltle-row h1{
+.tiltle-row h1 {
+	margin: 0 auto;
 	font-size: 60px;
 	margin-bottom: 20px;
 }
-img.share  {
+img.share {
 	width: 60px;
-	padding: 10px;
+	margin-top: -20px;
 }
-.lable{
-border: 1px solid #000;
-border-radius: 20px;
-display: flex;
-width: 250px;
-padding: 10px;
-}
-
-.lable-row {
-    display: flex;
-    flex-wrap: wrap;
-    }
-.lable {
-	display: flex;
-	flex-direction: row;
-	align-items: center;
-	justify-content: space-between;
-	padding: 10px;
-	margin: 5px;
-}
-.lable-text {display: flex; flex-direction: column;}
-.lable-text span{
 
 }
 .name {
@@ -105,42 +141,111 @@ padding: 10px;
 .value {
 	font-size: 24px;
 }
-
-.lable img{
+.lable img {
 	height: 60px;
 	width: 60px;
 }
-
-@media screen and (max-width: 1660px){
-	.container{
+@media screen and (max-width: 1660px) {
+	.container {
 		max-width: 1200px;
 	}
+	.tiltle-row h1 {
+		font-size: 42px;
+	}
 }
-
-@media screen and (max-width: 1400px){
-	.container{
+@media screen and (max-width: 1400px) {
+	.container {
 		max-width: 968px;
 		flex-direction: column;
 	}
-
-	.recipe-block{
-		margin: 0 auto;
-		width: 90%;
+	.recipe-block {
+		margin: 0px auto;
+		width: 100%;
 	}
-	.lable-row{
-		justify-content: center;
+	.lable-row {
+		justify-content: left;
 	}
-	.about-dish{
-		flex-direction: row;
+	.about-dish {
+		flex-direction: column;
+		width: 100%;
+		padding: 0 20px;
+	}
+	.photo {
 		width: 100%
 	}
-	.photo{
-		width: 60%
+	.photo img {
+		width: 100%;
+		height: 100%;
+		box-shadow: ;
 	}
-	.photo img{
-		width: 100%
+	.ingreds {
+		margin: 20px 0;
 	}
-	.ingreds{
-		margin: 20px;
+	ul {
+		display: inline-flex;
+		flex-flow: row wrap;
+	}
+	li {
+		font-size: 24px;
+		flex: 1 0 40%;
+		font-size: 30px;
+		text-align: left;
+		margin: 10px 20px 10px 0;
+	}
+	.tiltle-row h1 {
+		font-size: 70px;
+		margin-bottom: 20px;
 	}
 }
+@media screen and (max-width: 770px) {
+	.container {
+		max-width: 100%;
+		margin: 0 auto;
+	}
+	.about-dish {
+		padding: 0 5px;
+		width: 80%;
+		margin: 0 auto;
+	}
+	.lable-row {
+		width: 100%;
+		flex-direction: column;
+	}
+	.lable {
+		width: 100%;
+		height: 80px;
+		flex: 0 0 80px;
+	}
+	.recipe-block {
+		width: 90%;
+		margin: 0 auto;
+	}
+	ul {
+		display: flex;
+		flex-flow: column nowrap;
+	}
+	li {
+		flex: 1 1 100%;
+		font-size: 18px
+	}
+	.tiltle-row h1 {
+		font-size: 50px
+	}
+	.ingreds h4 {
+		font-size: 20px;
+	}
+	p {
+		font-size: 20px
+	}
+	@media screen and (max-width: 650px) {}
+	.tiltle-row h1 {
+		font-size: 38px
+	}
+	.about-dish {
+		width: 100%
+	}
+}
+@media screen and (max-width:420px) {
+	.tiltle-row h1 {
+		font-size: 30px
+	}
