@@ -23,8 +23,8 @@
 
 				<div class="recipe-row">
 					{% for i in daily_recipes %}
-					<div class="recipe-card" onclick="location.href='/fridge/{{i.id}}'">
-						<img class="recipe-photo" src="{{url_for('static', filename='img/recipe_' + string_id[i.id] + '.jpg')}}" alt="">
+					<div class="recipe-card">
+						<img class="recipe-photo" src="{{url_for('static', filename='img/recipe_' + string_id[i.id] + '.jpg')}}" alt=""  onclick="location.href='/fridge/{{i.id}}'">
 
 						<div class="recipe-info">
 							<div class="recipe-name"><h4>{{i.recipe_name}}</h4></div>
@@ -87,8 +87,8 @@
 				<div class="recipe-row">
 
 					{% for i in recipes %}
-						<div class="recipe-card" onclick="location.href='/fridge/{{i.id}}'">
-							<img class="recipe-photo" src="{{url_for('static', filename='img/recipe_' + string_id[i.id] + '.jpg')}}" alt="">
+						<div class="recipe-card" >
+							<img class="recipe-photo" src="{{url_for('static', filename='img/recipe_' + string_id[i.id] + '.jpg')}}" alt="" onclick="location.href='/fridge/{{i.id}}'">
 
 							<div class="recipe-info">
 								<div class="recipe-name"><h4>{{i.recipe_name}}</h4></div>
