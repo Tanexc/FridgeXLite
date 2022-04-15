@@ -1,12 +1,9 @@
-import datetime
 import sqlalchemy
-from sqlalchemy import orm
-from flask_login import UserMixin
 from sqlalchemy_serializer import SerializerMixin
 from .db_session import SqlAlchemyBase
 
 
-class Product(SqlAlchemyBase, UserMixin, SerializerMixin):
+class Product(SqlAlchemyBase, SerializerMixin):
     __tablename__ = "products"
 
     id = sqlalchemy.Column(sqlalchemy.Integer,

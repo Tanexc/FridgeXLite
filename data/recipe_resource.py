@@ -14,38 +14,32 @@ class RecipeResource(Resource):
         abort_if_user_not_found(id)
         session = db_session.create_session()
         recipe = session.query(Recipe).get(id)
-        img = Image.open(f"static/img/recipe_{id}.jpg")
-
-        return jsonify({'recipe': recipe.to_dict(), "image_code": getByteStringFromIamge(img)})
+        return jsonify({'recipe': recipe.to_dict() + {"image": f"https://fridgex.herokuapp.com/static/img/recipe_{id}.jpg"}})
 
 class RecipeDailyResource(Resource):
     def get(self):
         session = db_session.create_session()
         recipes = getDailyRecipes()
-        return jsonify({'recipes': [item.to_dict() for item in recipes], "images_codes": [getByteStringFromIamge(Image.open(f"static/img/recipe_{recipe.id}.jpg")) for recipe in recipes]})
+        return jsonify({'recipes': [item.to_dict() + {"image": f"https://fridgex.herokuapp.com/static/img/recipe_{item.id}.jpg"} for item in recipes]})
 
 
 class RecipeCategoryResource(Resource):
     def get(self, category: str):
         session = db_session.create_session()
         recipes = session.query(Recipe).filter(Recipe.category_global == category).all()
-        return jsonify({'recipes': [item.to_dict() for item in recipes], "images_codes": [getByteStringFromIamge(Image.open(f"static/img/recipe_{recipe.id}.jpg")) for recipe in recipes]})
+        return jsonify({'recipes': [item.to_dict() + {"image": f"https://fridgex.herokuapp.com/static/img/recipe_{item.id}.jpg"} for item in recipes]})
 
 
 class RecipeListResource(Resource):
     def get(self):
         session = db_session.create_session()
-        recipe = session.query(Recipe).all()
-        return jsonify({'recipes': [item.to_dict() for item in recipe], "images_codes": [getByteStringFromIamge(Image.open(f"static/img/recipe_{recipe.id}.jpg")) for recipe in recipes]})
+        recipes = session.query(Recipe).all()
+        return jsonify({'recipes': [item.to_dict() + {"image": f"https://fridgex.herokuapp.com/static/img/recipe_{item.id}.jpg"} for item in recipes]})
 
 
-def abort_if_recipe_not_found(id):
+def abort_if_user_not_found(id):
     session = db_session.create_session()
-    user = session.query(Recipe).get(id)
-    if not user:
+    recipe = session.query(Recipe).get(id)
+    if not recipe:
         abort(404, message=f"Recipe with id = {id} not found")
 
-
-def getByteStringFromIamge(id: int):
-    image = Image.open(f"recipe_{id}.jpg").read()
-    encoded_string = base64.b64encode(image.read())
