@@ -10,12 +10,12 @@ from . import db_session
 
 
 class RecipeResource(Resource):
-    def get(self, id):
+    def get(self, recipe_id):
         abort_if_user_not_found(id)
         session = db_session.create_session()
-        recipe = session.query(Recipe).get(id)
+        recipe = session.query(Recipe).get(recipe_id)
         info = recipe.to_dict()
-        info["image"] = f"https://fridgex.herokuapp.com/static/img/recipe_{id}.jpg"
+        info["image"] = f"https://fridgex.herokuapp.com/static/img/recipe_{recipe_id}.jpg"
         return jsonify({'recipe': info})
 
 
