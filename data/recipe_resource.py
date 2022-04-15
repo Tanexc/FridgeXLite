@@ -11,7 +11,7 @@ from . import db_session
 
 class RecipeResource(Resource):
     def get(self, recipe_id):
-        abort_if_user_not_found(id)
+        abort_if_user_not_found(recipe_id)
         session = db_session.create_session()
         recipe = session.query(Recipe).get(recipe_id)
         info = recipe.to_dict()
