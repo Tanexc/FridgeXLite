@@ -22,9 +22,9 @@ string_id = None
 # API приложения
 api = Api(app)
 api.add_resource(recipe_resource.RecipeListResource, "/api/fridge-x-lite-api/recipes")
-api.add_resource(recipe_resource.RecipeResource, "/api/fridge-x-lite-api/recipe/<int:recipe_id>")
+api.add_resource(recipe_resource.RecipeResource, "/api/fridge-x-lite-api/recipe/<recipe_id>")
 api.add_resource(recipe_resource.RecipeDailyResource, "/api/fridge-x-lite-api/recipes/daily")
-api.add_resource(recipe_resource.RecipeCategoryResource, "/api/fridge-x-lite-api/recipes/category/<string:category>")
+api.add_resource(recipe_resource.RecipeCategoryResource, "/api/fridge-x-lite-api/recipes/category/<category>")
 
 
 # функция запуска приложения
