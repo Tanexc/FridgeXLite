@@ -14,27 +14,45 @@ class RecipeResource(Resource):
         abort_if_user_not_found(id)
         session = db_session.create_session()
         recipe = session.query(Recipe).get(id)
-        return jsonify({'recipe': recipe.to_dict() + {"image": f"https://fridgex.herokuapp.com/static/img/recipe_{id}.jpg"}})
+        info = recipe.to_dict()
+        info["image"] = f"https://fridgex.herokuapp.com/static/img/recipe_{id}.jpg"
+        return jsonify({'recipe': info})
+
 
 class RecipeDailyResource(Resource):
     def get(self):
         session = db_session.create_session()
         recipes = getDailyRecipes()
-        return jsonify({'recipes': [item.to_dict() + {"image": f"https://fridgex.herokuapp.com/static/img/recipe_{item.id}.jpg"} for item in recipes]})
+        a = []
+        for item in recipes:
+            info = item.to_dict()
+            info["image"] = f"https://fridgex.herokuapp.com/static/img/recipe_{item.id}.jpg"
+            a.append(info)
+        return jsonify({'recipes': a})
 
 
 class RecipeCategoryResource(Resource):
     def get(self, category: str):
         session = db_session.create_session()
         recipes = session.query(Recipe).filter(Recipe.category_global == category).all()
-        return jsonify({'recipes': [item.to_dict() + {"image": f"https://fridgex.herokuapp.com/static/img/recipe_{item.id}.jpg"} for item in recipes]})
+        a = []
+        for item in recipes:
+            info = item.to_dict()
+            info["image"] = f"https://fridgex.herokuapp.com/static/img/recipe_{item.id}.jpg"
+            a.append(info)
+        return jsonify({'recipes': a})
 
 
 class RecipeListResource(Resource):
     def get(self):
         session = db_session.create_session()
         recipes = session.query(Recipe).all()
-        return jsonify({'recipes': [item.to_dict() + {"image": f"https://fridgex.herokuapp.com/static/img/recipe_{item.id}.jpg"} for item in recipes]})
+        a = []
+        for item in recipes:
+            info = item.to_dict()
+            info["image"] = f"https://fridgex.herokuapp.com/static/img/recipe_{item.id}.jpg"
+            a.append(info)
+        return jsonify({'recipes': a})
 
 
 def abort_if_user_not_found(id):
